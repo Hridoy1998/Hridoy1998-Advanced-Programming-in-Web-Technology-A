@@ -20,19 +20,19 @@ class HomeController extends Controller
     }
     function product()
     {
+        return view('pages.products');
+    }
+    function teams()
+    {
         $name = "Hridoy";
         $id="19-40101-1";
         $dob = "17-03-1998";
         $names=array("mansib", "Saharir");
        
-        return view('pages.products')
+        return view('pages.teams')
         ->with('name', $name)
         ->with('id', $id)
         ->with('dob', $dob)
         ->with('names', $names);;
-    }
-    function teams()
-    {
-        return view('pages.teams');
     }
 }
