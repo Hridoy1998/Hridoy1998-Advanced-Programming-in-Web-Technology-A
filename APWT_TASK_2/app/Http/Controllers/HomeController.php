@@ -89,4 +89,26 @@ class HomeController extends Controller
         $products[] = (object)$product;
         return view('pages.product')->with('product',$products);
     }
+    function loginSubmit(Request $req){
+
+        $req->validate([
+            'uname'=>'required|min:5|max:10',
+            'password'=>'required'
+
+        ]);
+
+        return "<h1>From submitted with $req->uname and $req->password</h1>";
+    }
+    function regSubmit(Request $req){
+
+        $req->validate([
+            'frist_name'=>'required',
+            'last_name'=>'required',
+            'dob'=>'required',
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+
+        return "<h1>Register comfirm</h1>";
+    }
 }

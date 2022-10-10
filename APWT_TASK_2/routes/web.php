@@ -23,3 +23,6 @@ Route::get('/registration',[HomeController::class,'reg'])->name('reg');
 Route::get('/ProductsList',[HomeController::class,'Pro_list'])->name('Pro_list');
 Route::get('/AgentList/Agent/{name}/{id}/{dob}',[HomeController::class,'AgentList'])->name('Agent');
 Route::get('/productlist/Product/{name}/{id}/{dob}',[HomeController::class,'productlist'])->name('ProductList');
+
+Route::post('/login',[HomeController::class,'loginSubmit'])->name('loginSubmit');
+Route::post('/registration',[HomeController::class,'regSubmit'])->name('regSubmit');

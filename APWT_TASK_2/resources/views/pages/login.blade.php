@@ -1,9 +1,17 @@
  @extends('layouts.navbar')<br>
  @section('main_pages')
 
-    <form action="" method="">
-        <h2>Username :<input type="text" name="" id="" placeholder="Username"></h2>
-        <h2>Password :<input type="password" name="" id="" placeholder="Password"></h2>
+    <form action="{{ route('loginSubmit') }}" method="post">
+        {{ @csrf_field() }}
+        <h2>Username :<input type="text" name="uname" value="{{ old('uname') }}" placeholder="Username">
+        @error('uname')
+            <span>{{ $message }}</span></h2>
+        @enderror
+        <h2>Password :<input type="password" name="password" value="{{ old('password') }}" placeholder="Password">
+        @error('password')
+            <span>{{ $message }}</span></h2>
+        @enderror
+        <br>
         <input type="submit" value="Login"><br>
     </form>
 
