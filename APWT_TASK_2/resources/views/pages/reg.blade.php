@@ -14,6 +14,11 @@
             <span>{{ $message }}</span>
         @enderror</h2>
 
+        <h2>Enter Your User Name :<input type="text" name="user_name" value="{{ old('user_name') }}" placeholder=" Username">
+         @error('user_name')
+            <span>{{ $message }}</span>
+        @enderror</h2>
+
         <h2>Enter Your Date of Birth : <input type="date" name="dob" value="{{ old('dob') }}">
         @error('dob')
             <span>{{ $message }}</span>

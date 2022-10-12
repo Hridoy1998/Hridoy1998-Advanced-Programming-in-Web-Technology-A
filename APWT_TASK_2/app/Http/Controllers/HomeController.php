@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use Illuminate\Http\Request;
+use App\Models\Friend;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     }
     function contact()
     {
+        /*
         for($i=1;$i<=10;$i++){
             $date=new DateTime();
             $date = $date->format('Y-m-d H:i:s');
@@ -35,7 +37,8 @@ class HomeController extends Controller
                 "dob" =>$date
             );
             $agents[]= (object)$agent;
-        }
+        }*/
+        $agents = Friend::all();
         return view('pages.contact')->with('agents',$agents);
     }
     function product()
@@ -71,12 +74,13 @@ class HomeController extends Controller
         return view('pages.ProductList')->with('agents',$agents);;
     }
     function AgentList(Request $req){
-        $agent =array(
+        /*$agent =array(
             "name" =>$req->name,
             "id"=>$req->id,
             "dob"=>$req->dob
         );
-        $agents[] = (object)$agent;
+        $agents[] = (object)$agent;*/
+        $agents = Friend::where('id','=',$req->id)->get();
         return view('pages.agent')->with('agent',$agents);
     }
 
@@ -104,10 +108,20 @@ class HomeController extends Controller
         $req->validate([
             'frist_name'=>'required',
             'last_name'=>'required',
+            'user_name'=>'required',
             'dob'=>'required',
             'email'=>'required',
             'password'=>'required'
         ]);
+
+        $f = new Friend();
+        $f->first_name = $req->frist_name;
+        $f->last_name = $req->last_name;
+        $f->username = $req->user_name;
+        $f->dob = $req->dob;
+        $f->email = $req->email;
+        $f->password = $req->password;
+        $f->save();
 
         return "<h1>Register comfirm</h1>";
     }

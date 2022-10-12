@@ -5,15 +5,21 @@
     <br>
     <table>
         <tr>
-            <td><h2>Agent Name ||</h2></td>
-            <td><h2>Agent ID ||</h2></td>
-            <td><h2>Agent Date of Birth</h2></td>
+            <td><h2>||ID              ||</h2></td>
+            <td><h2>||Name            ||</h2></td>
+            <td><h2>||Username        ||</h2></td>
+            <td><h2>||Date of Birth   ||</h2></td>
+            <td><h2>||Email           ||</h2></td>
+            <td><h2>||Password||</h2></td>
         </tr>
         @foreach ($agents as $s)
         <tr>
-            <td><a href="{{ route('Agent',['name'=>$s->name,'id'=>$s->id,'dob'=>$s->dob])}}">{{  $s->name }}</a></td>
-            <td>{{  $s->id }}</td>
-            <td>{{ $s->dob }}</td>
+            <td>{{ $s->id ."   ||"}}</td>
+            <td><a href="{{ route('Agent',['id'=>$s->id]) }}">{{ $s->first_name." ". $s->last_name." ||"}}</a></td>
+            <td>{{ $s->username ." ||"}}</td>
+            <td>{{ $s->dob ." ||"}}</td>
+            <td>{{ $s->email ." ||"}}</td>
+            <td>{{ $s->password }}</td>
 
         </tr>
         @endforeach
